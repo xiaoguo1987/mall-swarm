@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.dao.OilwellPressureUndergroundMapper">
+
+    <select id="getUndergroundList" resultType="com.macro.mall.dto.OilwellPressureUnderground">
+        SELECT
+        id,
+        well_id  wellId,
+        layer_no layerNo,
+        init_stratum_pres initStratumPres,
+        init_saturation_pres initSaturationPres,
+        test_pres testPres,
+        pres_rate presRate,
+        creator ,
+        create_time createTime
+        FROM
+        oilwell_pressure_underground
+        WHERE
+
+        <if test="queryParam.wellId !=null ">
+            well_id = #{queryParam.wellId}
+        </if>
+        <if test="queryParam.layerNo !=0 ">
+            AND layer_no = #{queryParam.layerNo}
+        </if>
+        <if test="queryParam.startDate!=null and queryParam.endDate != null">
+            AND (create_time between #{queryParam.startDate} and  #{queryParam.endDate} )
+        </if>
+
+    </select>
+</mapper>
