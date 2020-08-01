@@ -3,7 +3,9 @@ package com.macro.mall.dto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.io.Serializable;
+import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -29,10 +31,10 @@ public class OilwellPressureUnderground implements Serializable {
      */
     private Integer wellId;
 
-    /**
-     * 层位
-     */
-    private Integer layerNo;
+	/**
+	 * 井区
+	 */
+	private String wellRegion;
 
     /**
      * 原始地层压力
@@ -62,7 +64,8 @@ public class OilwellPressureUnderground implements Serializable {
     /**
      * 创建时间
      */
-    private LocalDate createTime;
+	@JsonFormat(pattern = "yyyy-MM-dd")
+    private Date createTime;
 
 
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.dao.OilwellProductMapper">
+
+    <select id="getUndergroundList" resultType="com.macro.mall.dto.OilwellProduct">
+        SELECT
+        id,
+        well_id  wellId,
+        well_region wellRegion,
+        static_liq_level staticLiqLevel,
+        oil_prod_mon oilProdMon,
+        water_prod_mon waterProdMon,
+        liq_prod_mon liqProdMon,
+        oil_month oilMonth,
+        oil_year oilYear
+        FROM
+        oilwell_product
+        WHERE
+
+        <if test="queryParam.wellId !=null ">
+            well_id = #{queryParam.wellId}
+        </if>
+
+        <if test="queryParam.wellRegion !=null ">
+         and  well_region = #{queryParam.wellRegion}
+        </if>
+
+        <if test="queryParam.oilYear!=null ">
+            AND oil_year = #{queryParam.oilYear}
+        </if>
+
+    </select>
+</mapper>

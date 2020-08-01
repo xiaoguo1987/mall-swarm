@@ -9,6 +9,7 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * <p>
@@ -44,7 +45,7 @@ public class OilwellPressureUndergroundVo implements Serializable {
      * 创建时间
      */
 	@JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate createTime;
+    private Date createTime;
 
 
 }

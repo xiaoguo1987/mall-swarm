@@ -47,7 +47,7 @@ public interface UmsRoleService {
     /**
      * 分页获取角色列表
      */
-    List<UmsRole> list(String keyword, Integer pageSize, Integer pageNum);
+    List<UmsRole> list(String keyword, Integer pageSize, Integer pageNum,String userName);
 
     /**
      * 根据管理员ID获取对应菜单

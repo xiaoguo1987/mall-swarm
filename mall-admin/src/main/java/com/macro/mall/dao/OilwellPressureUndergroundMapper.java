@@ -18,4 +18,7 @@ public interface OilwellPressureUndergroundMapper  {
 
 	List<OilwellPressureUnderground> getUndergroundList(@Param("queryParam") OilwellPressureUndergroundBo queryParam);
 
+	List<String> initOilRegionList();
+
+	List<String>  initWillIdList(String oilRegion);
 }

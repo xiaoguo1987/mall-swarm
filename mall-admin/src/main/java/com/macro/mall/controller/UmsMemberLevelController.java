@@ -25,11 +25,11 @@ public class UmsMemberLevelController {
     @Autowired
     private UmsMemberLevelService memberLevelService;
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+/*    @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ApiOperation("查询所有会员等级")
     @ResponseBody
     public CommonResult<List<UmsMemberLevel>> list(@RequestParam("defaultStatus") Integer defaultStatus) {
         List<UmsMemberLevel> memberLevelList = memberLevelService.list(defaultStatus);
         return CommonResult.success(memberLevelList);
-    }
+    }*/
 }

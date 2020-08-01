@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.macro.mall.dao.OilwellWateryMapper">
+
+    <select id="getUndergroundList" resultType="com.macro.mall.dto.OilwellWatery">
+        SELECT
+        id,
+        well_id  wellId,
+        well_region wellRegion,
+        oil_prod_mon oilProdMon,
+        water_prod_mon waterProdMon,
+        liq_prod_mon liqProdMon,
+        oil_prod_daily oilProdDaily,
+        water_prod_daily waterProdDaily,
+        liq_prod_daily liqProdDaily,
+        create_time createTime
+        FROM
+        oilwell_watery
+        WHERE
+
+        <if test="queryParam.wellId !=null ">
+            well_id = #{queryParam.wellId}
+        </if>
+
+        <if test="queryParam.startDate!=null and queryParam.endDate != null">
+            AND (create_time between #{queryParam.startDate} and  #{queryParam.endDate} )
+        </if>
+
+    </select>
+</mapper>

@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * <p>
@@ -25,23 +26,26 @@ public class OilwellPressureUndergroundBo implements Serializable {
     /**
      * 井ID
      */
-    private Integer wellId;
+    private String wellId;
 
     /**
-     * 层位
+     * 井区
      */
-    private Integer layerNo;
+    private String wellRegion;
 
     /**
      * 开始时间
      */
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-    private LocalDate startDate;
+    private Date startDate;
 	/**
 	 * 结束时间
 	 */
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-    private LocalDate endDate;
+    private Date endDate;
 
-
+	/**
+	 * 图片流
+	 */
+	private String  imgOutput;
 }

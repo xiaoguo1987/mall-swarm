@@ -1,4 +1,5 @@
 /*
+
 package com.macro.mall.config;
 
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
@@ -7,28 +8,22 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.builder.ConfigBuilder;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.rules.FileType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-*/
-/**
- * @ClassName: CodeGenerator
- * @description:
- * @author: gjm
- * @date: 2020-07-12 14 56
- **//*
+
+
 
 public class CodeGenerator {
-	*/
-/**
-	 * <p>
-	 * 读取控制台内容
-	 * </p>
-	 *//*
+
+
 
 	public static String scanner(String tip) {
 		Scanner scanner = new Scanner(System.in);
@@ -51,7 +46,7 @@ public class CodeGenerator {
 		// 全局配置
 		GlobalConfig gc = new GlobalConfig();
 		String projectPath = System.getProperty("user.dir");
-		gc.setOutputDir(projectPath + "/src/main/java");
+		gc.setOutputDir(projectPath + "/mall-admin/src/main/java");
 		gc.setAuthor(scanner("作者:"));
 		gc.setOpen(false);
 		// gc.setSwagger2(true); 实体属性 Swagger2 注解
@@ -95,34 +90,12 @@ public class CodeGenerator {
 						+ "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
 			}
 		});
-        */
-/*
-        cfg.setFileCreate(new IFileCreate() {
-            @Override
-            public boolean isCreate(ConfigBuilder configBuilder, FileType fileType, String filePath) {
-                // 判断自定义文件夹是否需要创建
-                checkDir("调用默认方法创建的目录，自定义目录用");
-                if (fileType == FileType.MAPPER) {
-                    // 已经生成 mapper 文件判断存在，不想重新生成返回 false
-                    return !new File(filePath).exists();
-                }
-                // 允许生成模板文件
-                return true;
-            }
-        });
-        *//*
 
 		cfg.setFileOutConfigList(focList);
 		mpg.setCfg(cfg);
 
 		// 配置模板
 		TemplateConfig templateConfig = new TemplateConfig();
-
-		// 配置自定义输出模板
-		//指定自定义模板路径，注意不要带上.ftl/.vm, 会根据使用的模板引擎自动识别
-		// templateConfig.setEntity("templates/entity2.java");
-		// templateConfig.setService();
-		// templateConfig.setController();
 
 		templateConfig.setXml(null);
 		mpg.setTemplate(templateConfig);
@@ -147,4 +120,6 @@ public class CodeGenerator {
 	}
 
 }
+
+
 */

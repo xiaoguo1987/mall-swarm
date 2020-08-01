@@ -4,9 +4,8 @@
 
     <select id="getUndergroundList" resultType="com.macro.mall.dto.OilwellPressureUnderground">
         SELECT
-        id,
         well_id  wellId,
-        layer_no layerNo,
+        well_region wellRegion,
         init_stratum_pres initStratumPres,
         init_saturation_pres initSaturationPres,
         test_pres testPres,
@@ -15,17 +14,20 @@
         create_time createTime
         FROM
         oilwell_pressure_underground
-        WHERE
-
-        <if test="queryParam.wellId !=null ">
-            well_id = #{queryParam.wellId}
-        </if>
-        <if test="queryParam.layerNo !=0 ">
-            AND layer_no = #{queryParam.layerNo}
-        </if>
+        WHERE well_id = #{queryParam.wellId}
+           and well_region = #{queryParam.wellRegion}
         <if test="queryParam.startDate!=null and queryParam.endDate != null">
             AND (create_time between #{queryParam.startDate} and  #{queryParam.endDate} )
         </if>
 
     </select>
+
+    <select id="initOilRegionList" resultType="java.lang.String">
+        SELECT distinct well_region from oilwell_pressure_underground where well_region is not null
+    </select>
+
+    <select id="initWillIdList" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT  distinct well_id from oilwell_pressure_underground where well_region= #{oilRegion}
+    </select>
+
 </mapper>

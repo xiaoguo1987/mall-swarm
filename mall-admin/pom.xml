@@ -17,10 +17,10 @@
     </parent>
 
     <dependencies>
-        <dependency>
+       <!-- <dependency>
             <groupId>com.macro.mall</groupId>
             <artifactId>mall-mbg</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.macro.mall</groupId>
             <artifactId>mall-security</artifactId>
@@ -45,6 +45,31 @@
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.72</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
+        <!--导出poi jar -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+
         <!-- 前端传日期转化 date json -->
         <!--<dependency>-->
             <!--<groupId>com.fasterxml.jackson.core</groupId>-->

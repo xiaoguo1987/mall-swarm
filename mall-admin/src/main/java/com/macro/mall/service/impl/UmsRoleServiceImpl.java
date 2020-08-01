@@ -84,12 +84,15 @@ public class UmsRoleServiceImpl implements UmsRoleService {
     }
 
     @Override
-    public List<UmsRole> list(String keyword, Integer pageSize, Integer pageNum) {
+    public List<UmsRole> list(String keyword, Integer pageSize, Integer pageNum,String userName) {
         PageHelper.startPage(pageNum, pageSize);
         UmsRoleExample example = new UmsRoleExample();
         if (!StringUtils.isEmpty(keyword)) {
             example.createCriteria().andNameLike("%" + keyword + "%");
         }
+        if(!"admin".equals(userName)){
+			example.createCriteria().andNameNotLike("%" + "管理员" + "%");
+		}
         return roleMapper.selectByExample(example);
     }
 

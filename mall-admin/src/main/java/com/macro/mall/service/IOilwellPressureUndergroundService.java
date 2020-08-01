@@ -3,6 +3,7 @@ package com.macro.mall.service;
 import com.macro.mall.dto.Bo.OilwellPressureUndergroundBo;
 import com.macro.mall.dto.OilwellPressureUnderground;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -17,4 +18,9 @@ public interface IOilwellPressureUndergroundService {
 
 	List<OilwellPressureUnderground>  getUndergroundList(OilwellPressureUndergroundBo oilwellPressureUndergroundBo);
 
+	List<String>  initOilRegionList();
+
+	List<String>  initWillIdList(String oilRegion);
+
+	void export(OilwellPressureUndergroundBo oilwellPressureUndergroundBo,HttpServletResponse response) throws Exception;
 }

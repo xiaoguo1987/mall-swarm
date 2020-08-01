@@ -3,6 +3,7 @@ package com.macro.mall.controller;
 import com.macro.mall.common.api.CommonPage;
 import com.macro.mall.common.api.CommonResult;
 import com.macro.mall.model.*;
+import com.macro.mall.service.UmsAdminService;
 import com.macro.mall.service.UmsRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -22,6 +24,8 @@ import java.util.List;
 public class UmsRoleController {
     @Autowired
     private UmsRoleService roleService;
+	@Autowired
+	private UmsAdminService adminService;
 
     @ApiOperation("添加角色")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -89,8 +93,11 @@ public class UmsRoleController {
     @ResponseBody
     public CommonResult<CommonPage<UmsRole>> list(@RequestParam(value = "keyword", required = false) String keyword,
                                                   @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-                                                  @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-        List<UmsRole> roleList = roleService.list(keyword, pageSize, pageNum);
+                                                  @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,Principal principal) {
+		String username = principal.getName();
+		UmsAdmin umsAdmin = adminService.getAdminByUsername(username);
+		System.out.println("username="+umsAdmin.getUsername());
+    	List<UmsRole> roleList = roleService.list(keyword, pageSize, pageNum,username);
         return CommonResult.success(CommonPage.restPage(roleList));
     }
 
